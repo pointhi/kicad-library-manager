@@ -25,8 +25,8 @@ class MainFrameView(wx.Frame):
 
         bSizer2 = wx.BoxSizer(wx.VERTICAL)
 
-        self.m_dataViewTreeCtrl5 = wx.dataview.DataViewTreeCtrl(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0)
-        bSizer2.Add(self.m_dataViewTreeCtrl5, 1, wx.ALL | wx.EXPAND, 5)
+        self.m_libraries = wx.dataview.DataViewTreeCtrl(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0)
+        bSizer2.Add(self.m_libraries, 1, wx.ALL | wx.EXPAND, 5)
 
         bSizer2.AddSpacer((0, 0), 0, wx.FIXED_MINSIZE, 5)
 
@@ -42,6 +42,9 @@ class MainFrameView(wx.Frame):
 
         self.m_toggle_visibility = wx.Button(self, wx.ID_ANY, u"Disable Library", wx.DefaultPosition, wx.DefaultSize, 0)
         bSizer4.Add(self.m_toggle_visibility, 0, wx.ALL, 5)
+
+        self.m_update_lib = wx.Button(self, wx.ID_ANY, u"Update Library", wx.DefaultPosition, wx.DefaultSize, 0)
+        bSizer4.Add(self.m_update_lib, 0, wx.ALL, 5)
 
         bSizer4.AddSpacer((0, 0), 1, wx.EXPAND, 5)
 
@@ -77,6 +80,7 @@ class MainFrameView(wx.Frame):
         self.m_append_lib.Bind(wx.EVT_BUTTON, self.btn_append_lib)
         self.m_remove_lib.Bind(wx.EVT_BUTTON, self.btn_remove_lib)
         self.m_toggle_visibility.Bind(wx.EVT_BUTTON, self.btn_toggle_visibility)
+        self.m_update_lib.Bind(wx.EVT_BUTTON, self.btn_update_lib)
         self.m_import_table.Bind(wx.EVT_BUTTON, self.btn_import_table)
         self.m_export_table.Bind(wx.EVT_BUTTON, self.btn_export_table)
         self.m_cancle.Bind(wx.EVT_BUTTON, self.btn_cancle)
@@ -93,6 +97,9 @@ class MainFrameView(wx.Frame):
         event.Skip()
 
     def btn_toggle_visibility(self, event):
+        event.Skip()
+
+    def btn_update_lib(self, event):
         event.Skip()
 
     def btn_import_table(self, event):

@@ -16,6 +16,7 @@
 # (C) 2017 by Thomas Pointhuber, <thomas.pointhuber@gmx.at>
 
 import wx
+import wx.dataview
 
 from LibraryTable import LibraryTableModel, LibraryTableWidget
 from library.GitLibrary import GitLibrary
@@ -29,14 +30,32 @@ class MainFrame(MainFrameView):
     def __init__(self, parent):
         MainFrameView.__init__(self, parent)
 
+        #self.m_libraries.AppendToggleColumn("Toggle", 0)
+        #self.m_libraries.AppendTextColumn("Text", 1)
+
+        data = [True, "row 1"]
+        data = wx.dataview.DataViewItem()
+        self.m_libraries.AppendItem(data, "row 1")
+        self.m_libraries.AppendItem(data, "row 2")
+
+        #data = [False, "row 3"]
+        #self.m_libraries.AppendItem(self.m_libraries, data)
+
+        #self.m_libraries.AssociateModel(LibraryTableModel())
+
     # event handlers
     def btn_append_lib(self, event):
-        event.Skip()
+        item = wx.dataview.Item("asdf")
+        self.m_libraries.AppendItem(self, item)
+
 
     def btn_remove_lib(self, event):
         event.Skip()
 
     def btn_toggle_visibility(self, event):
+        event.Skip()
+
+    def btn_update_lib(self, event):
         event.Skip()
 
     def btn_import_table(self, event):
@@ -71,7 +90,7 @@ if __name__ == '__main__':
     model = LibraryTableModel()
     print(model)
 
-    lib = DirectoryLibrary("/home/thomas/Projekte/Kicad/packages3D/Connectors_JST.3dshapes")
+    lib = DirectoryLibrary("/home/thomas/Projekte/Kicad/packages3D/")
     lib.find_libraries()
     model.add_library(lib)
 
@@ -79,6 +98,6 @@ if __name__ == '__main__':
     lib.find_libraries()
     model.add_library(lib)
 
-    #print(model)
+    print(model)
 
     start()

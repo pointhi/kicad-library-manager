@@ -17,12 +17,12 @@ import os
 
 import wx
 import wx.grid
+import wx.dataview
 
-from collections import OrderedDict
 
-
-class LibraryTableModel(object):
+class LibraryTableModel(wx.dataview.PyDataViewModel):
     def __init__(self):
+        wx.dataview.PyDataViewModel.__init__(self)
         self.libraries = []
 
     def add_library(self, library):
